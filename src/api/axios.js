@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://finalprojectbackend-9n0r.onrender.com', // Make sure this is your backend API URL
+    baseURL: 'https://finalprojectbackend-9n0r.onrender.com/api', // Make sure this is your backend API URL
     headers: {
         'Content-Type': 'application/json',
     },
