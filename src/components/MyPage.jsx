@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axiosInstance from '../api/axios';
+import axiosInstance from '../api/axios'; // Use axiosInstance
 
 const MyPage = () => {
   const [myTemplates, setMyTemplates] = useState([]);
@@ -11,12 +11,7 @@ const MyPage = () => {
   useEffect(() => {
     const fetchMyTemplates = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get('/templates/mine', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get('/templates/mine');
         setMyTemplates(response.data);
       } catch (error) {
         console.error('Error fetching my templates:', error);
@@ -26,12 +21,7 @@ const MyPage = () => {
     // Fetch forms the user has responded to
     const fetchMyForms = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get('/forms/mine', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get('/forms/mine');
         setMyForms(response.data);
       } catch (error) {
         console.error('Error fetching my forms:', error);
@@ -142,3 +132,4 @@ const MyPage = () => {
 };
 
 export default MyPage;
+

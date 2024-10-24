@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axiosInstance from '../api/axios';
+import axiosInstance from '../api/axios'; // Use axiosInstance
 import { useNavigate, Link } from 'react-router-dom'; // Import Link for navigation
 
 const RegisterPage = () => {
@@ -25,7 +25,7 @@ const RegisterPage = () => {
 
         setIsLoading(true); // Start loading
         try {
-            await axios.post('/users/register', formData);
+            await axiosInstance.post('/users/register', formData); // Use axiosInstance here
             setIsSuccess(true);
             setMessage('Registration successful!');
             setFormData({ name: '', email: '', password: '' });

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axiosInstance from '../api/axios';
+import axiosInstance from '../api/axios'; // Use axiosInstance
 
 const TemplatePage = () => {
   const { id } = useParams();
@@ -10,7 +10,7 @@ const TemplatePage = () => {
   useEffect(() => {
     const fetchTemplate = async () => {
       try {
-        const response = await axios.get(`/templates/${id}`);
+        const response = await axiosInstance.get(`/templates/${id}`); // Use axiosInstance
         setTemplate(response.data);
       } catch (error) {
         console.error('Error fetching template:', error);

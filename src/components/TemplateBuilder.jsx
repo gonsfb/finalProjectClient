@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axiosInstance from '../api/axios';
+import axiosInstance from '../api/axios'; // Use axiosInstance
 import { useNavigate } from 'react-router-dom';
 
 const TemplateBuilder = () => {
@@ -32,7 +32,7 @@ const TemplateBuilder = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(
+      await axiosInstance.post(
         '/templates',
         { title, description, customFields },
         {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axiosInstance from '../api/axios';
+import axiosInstance from '../api/axios'; // Import the axiosInstance
 import { useNavigate, Link } from 'react-router-dom'; // Import Link for navigation
 
 const LoginPage = () => {
@@ -9,22 +9,20 @@ const LoginPage = () => {
     const [isSuccess, setIsSuccess] = useState(false); // Add success state
     const navigate = useNavigate();
 
-    // Inside LoginPage.jsx after a successful login
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/users/login', { email, password });
-      const token = response.data.token;
-      if (token) {
-        localStorage.setItem('token', token); // Store token
-        navigate('/dashboard'); // Redirect to dashboard
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      setMessage('Login failed. Please check your credentials.');
-    }
-  };
-  
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axiosInstance.post('/users/login', { email, password }); // Use axiosInstance
+            const token = response.data.token;
+            if (token) {
+                localStorage.setItem('token', token); // Store token
+                navigate('/dashboard'); // Redirect to dashboard
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            setMessage('Login failed. Please check your credentials.');
+        }
+    };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">

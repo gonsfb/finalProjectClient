@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://finalprojectbackend-9n0r.onrender.com/api', // Make sure this is your backend API URL
+    baseURL: 'https://finalprojectbackend-9n0r.onrender.com/api', // Include '/api' as your backend prefix
     headers: {
-        'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     },
-});
+  });
 
 axiosInstance.interceptors.request.use(
     (config) => {
